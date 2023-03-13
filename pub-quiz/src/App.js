@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 
+
 function App() {
   const [image, setImage] = useState(null);
   const [pixelatedImages, setPixelatedImages] = useState([]);
@@ -23,8 +24,8 @@ function App() {
 
         const pixelatedImages = [];
 
-        for (let i = 1; i <= 25; i++) {
-          const pixelSize = i * 10;
+        for (let i = 1; i <= 35; i++) {
+          const pixelSize = i * 7;
           const pixelatedCanvas = document.createElement('canvas');
           pixelatedCanvas.width = img.width;
           pixelatedCanvas.height = img.height;
@@ -56,12 +57,11 @@ function App() {
   return (
     <div>
       <input type="file" onChange={handleImageUpload} />
-
-      {image && <img src={image.src} alt="Pixelated" />}
-
+      <br></br>
       {pixelatedImages.map((dataURL, index) => (
-        <img key={index} src={dataURL} alt="Pixelated" onClick={() => handleImageSelection(index)} />
+        <img key={index} src={dataURL} class="img-class" alt="Pixelated" onClick={() => handleImageSelection(index)} />
       ))}
+      {image && <img src={image.src} class="img-class" alt="Pixelated" />}
     </div>
   );
 }
