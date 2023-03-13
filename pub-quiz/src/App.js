@@ -59,9 +59,9 @@ function App() {
       <input type="file" onChange={handleImageUpload} />
       <br></br>
       {pixelatedImages.map((dataURL, index) => (
-        <img key={index} src={dataURL} class="img-class" alt="Pixelated" onClick={() => handleImageSelection(index)} />
+        <img key={index} src={dataURL} className="img-class" alt="Pixelated" onClick={() => handleImageSelection(index)} />
       ))}
-      {image && <img src={image.src} class="img-class" alt="Pixelated" />}
+      {image && <img src={image.src} className="img-class" alt="Pixelated" />}
     </div>
   );
 }
