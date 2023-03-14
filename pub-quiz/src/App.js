@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-
+import { Carousel } from 'react-bootstrap';
 
 function App() {
   const [image, setImage] = useState(null);
@@ -58,10 +57,18 @@ function App() {
     <div>
       <input type="file" onChange={handleImageUpload} />
       <br></br>
-      {pixelatedImages.map((dataURL, index) => (
-        <img key={index} src={dataURL} className="img-class" alt="Pixelated" onClick={() => handleImageSelection(index)} />
-      ))}
-      {image && <img src={image.src} className="img-class" alt="Pixelated" />}
+      <Carousel fade>
+        {pixelatedImages.map((dataURL, index) => (
+          <Carousel.Item key={index} onClick={() => handleImageSelection(index)}>
+            <img src={dataURL} className="d-block w-100 img-class" alt={"Pixelated " + index} />
+          </Carousel.Item>
+        ))}
+        {image && (
+          <Carousel.Item>
+            <img src={image.src} className="d-block w-100 img-class" alt="Pixelated" />
+          </Carousel.Item>
+        )}
+      </Carousel>
     </div>
   );
 }
