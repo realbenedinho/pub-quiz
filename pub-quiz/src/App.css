@@ -31,10 +31,22 @@
 .img-class {
   max-width: 45vw;
   max-height: 45vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
+.carousel-container {
+  max-width: 95vw;
+  max-height: 95vh;
+}
 
+/* .carousel-container .carousel {
+  width: 95%;
+  height: 95%;
+}
+ */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
