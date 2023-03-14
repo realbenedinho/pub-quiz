@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
+import { Carousel } from 'react-bootstrap';
 
 function App() {
   const [image, setImage] = useState(null);
@@ -23,8 +23,8 @@ function App() {
 
         const pixelatedImages = [];
 
-        for (let i = 1; i <= 25; i++) {
-          const pixelSize = i * 10;
+        for (let i = 1; i <= 35; i++) {
+          const pixelSize = i * 7;
           const pixelatedCanvas = document.createElement('canvas');
           pixelatedCanvas.width = img.width;
           pixelatedCanvas.height = img.height;
@@ -56,12 +56,19 @@ function App() {
   return (
     <div>
       <input type="file" onChange={handleImageUpload} />
-
-      {image && <img src={image.src} alt="Pixelated" />}
-
-      {pixelatedImages.map((dataURL, index) => (
-        <img key={index} src={dataURL} alt="Pixelated" onClick={() => handleImageSelection(index)} />
-      ))}
+      <br></br>
+      <Carousel fade>
+        {pixelatedImages.map((dataURL, index) => (
+          <Carousel.Item key={index} onClick={() => handleImageSelection(index)}>
+            <img src={dataURL} className="d-block w-100 img-class" alt={"Pixelated " + index} />
+          </Carousel.Item>
+        ))}
+        {image && (
+          <Carousel.Item>
+            <img src={image.src} className="d-block w-100 img-class" alt="Pixelated" />
+          </Carousel.Item>
+        )}
+      </Carousel>
     </div>
   );
 }
